@@ -1,0 +1,19 @@
+{
+    "ifReply": "ONCE (仅触发时提示一次)",
+    "whiteGroups":[114514],
+    "whiteUsers":[1919810],
+    "whiteAdmin": true,
+    "userReply": "博士说话太快了, 请先休息time%秒吧~",
+    "groupReply": "博士们说话太快了, 请先让兔兔休息time%秒吧>_<",
+    "replyNoPrefix": true,
+    "user":{
+        "inertia": 45,
+        "moment": 3.5,
+        "cool": 120
+    },
+    "group":{
+        "inertia": 30,
+        "moment": 7.5,
+        "cool": 30
+    }
+}

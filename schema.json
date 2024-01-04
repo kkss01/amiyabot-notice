@@ -1,0 +1,96 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "whiteGroups": {
+            "title": "群号白名单",
+            "description": "相当于在以下群关闭本插件",
+            "type": "array",
+            "items": {
+                "type": "integer"
+            }
+        },
+        "whiteUsers": {
+            "title": "用户白名单",
+            "description": "以下用户既不会受到个人限制, 也不参与群聊冷却计数",
+            "type": "array",
+            "items": {
+                "type": "integer"
+            }
+        },
+        "whiteAdmin": {
+            "title": "超管白名单",
+            "description": "将所有超管添加到白名单",
+            "type": "boolean"
+        },
+        "ifReply": {
+            "title": "冷却提示行为",
+            "description": "触发冷却时是否提示",
+            "type": "string",
+            "enum": [
+                "NEVER (从不提示)",
+                "ONCE (仅触发时提示一次)",
+                "EVERY (冷却中每次呼叫都提示)"
+            ]
+        },
+        "userReply": {
+            "title": "用户冷却提示",
+            "description": "可选使用 time% 替换剩余冷却时间",
+            "type": "string"
+        },
+        "groupReply": {
+            "title": "群聊冷却提示",
+            "description": "可选使用 time% 替换剩余冷却时间",
+            "type": "string"
+        },
+        "replyNoPrefix": {
+            "title": "无前缀提醒",
+            "description": "响应无前缀的指令且处于冷却时, 是否提示冷却",
+            "type": "boolean"
+        },
+        "user": {
+            "title": "用户参数",
+            "type": "object",
+            "description": "限制单个用户的响应频率, 前两个值设为0时关闭",
+            "properties": {
+                "inertia": {
+                    "title": "最小稳定间隔",
+                    "description": "决定一个用户长时间连续呼叫时, 不触发冷却的最小间隔 (单位: 秒)",
+                    "type": "number"
+                },
+                "moment": {
+                    "title": "最大瞬时次数",
+                    "description": "决定一个用户在一瞬间内, 最大连续响应的次数 (可为小数)",
+                    "type": "number"
+                },
+                "cool": {
+                    "title": "基准冷却时间",
+                    "description": "根据用户上一次响应的时间, 基于此值动态调整冷却时间 (单位: 秒)",
+                    "type": "number"
+                }
+            }
+        },
+        "group": {
+            "title": "群聊参数",
+            "type": "object",
+            "description": "限制一个群聊的响应频率, 前两个值设为0时关闭",
+            "properties": {
+                "inertia": {
+                    "title": "最小稳定间隔",
+                    "description": "决定一个群聊长时间连续呼叫时, 不触发冷却的最小间隔 (单位: 秒)",
+                    "type": "number"
+                },
+                "moment": {
+                    "title": "最大瞬时次数",
+                    "description": "决定一个群聊在一瞬间内, 最大连续响应的次数 (可为小数)",
+                    "type": "number"
+                },
+                "cool": {
+                    "title": "基准冷却时间",
+                    "description": "根据群聊上一次响应的时间, 基于此值动态调整冷却时间 (单位: 秒)",
+                    "type": "number"
+                }
+            }
+        }
+    }
+}
